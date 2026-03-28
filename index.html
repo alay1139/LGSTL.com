@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lay Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #f5f7f2;
+            --warm-white: #f9faf6;
+            --terra: #4a7c59;
+            --terra-dark: #3a6347;
+            --charcoal: #22291f;
+            --brown-light: #556b52;
+            --sand: #b8c5af;
+            --sand-light: #dde4d8;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cream);
+            color: var(--charcoal);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- Fade-in animation --- */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Header --- */
+        header {
+            text-align: center;
+            padding: 4rem 1.5rem 3rem;
+            background: linear-gradient(180deg, var(--warm-white) 0%, var(--cream) 100%);
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            color: var(--charcoal);
+        }
+
+        header .divider {
+            width: 60px;
+            height: 2px;
+            background-color: var(--terra);
+            margin: 1rem auto;
+            border-radius: 1px;
+        }
+
+        header p.tagline {
+            font-size: 0.95rem;
+            color: var(--brown-light);
+            font-weight: 300;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        /* --- Main --- */
+        main {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+            flex: 1;
+        }
+
+        /* --- Mission --- */
+        .mission {
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: var(--brown-light);
+            text-align: center;
+            font-weight: 300;
+        }
+
+        /* --- Order buttons --- */
+        .order-section {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .order-section h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--charcoal);
+            margin-bottom: 1.25rem;
+        }
+
+        .order-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .order-btn {
+            display: inline-block;
+            width: 100%;
+            max-width: 400px;
+            padding: 1rem 1.5rem;
+            background-color: var(--terra);
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            border-radius: 6px;
+            transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+            box-shadow: 0 2px 8px rgba(181, 101, 29, 0.2);
+        }
+
+        .order-btn:hover {
+            background-color: var(--terra-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(181, 101, 29, 0.3);
+        }
+
+        .order-btn:active {
+            transform: translateY(0);
+        }
+
+        .order-btn .location {
+            display: block;
+            font-size: 0.78rem;
+            font-weight: 300;
+            opacity: 0.85;
+            margin-top: 2px;
+        }
+
+        /* --- Link sections --- */
+        .links-section {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .links-section h2 {
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--sand);
+            margin-bottom: 0.85rem;
+        }
+
+        .links-section ul {
+            list-style: none;
+        }
+
+        .links-section li {
+            margin-bottom: 0.6rem;
+        }
+
+        .links-section a {
+            color: var(--brown-light);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 400;
+            position: relative;
+            transition: color 0.25s ease;
+        }
+
+        .links-section a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 0;
+            height: 1px;
+            background-color: var(--terra);
+            transition: width 0.3s ease;
+        }
+
+        .links-section a:hover {
+            color: var(--terra);
+        }
+
+        .links-section a:hover::after {
+            width: 100%;
+        }
+
+
+        /* --- Divider line --- */
+        .section-rule {
+            width: 40px;
+            height: 1px;
+            background-color: var(--sand);
+            margin: 2.5rem auto;
+            border: none;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            font-size: 0.78rem;
+            color: var(--sand);
+            letter-spacing: 0.04em;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .order-btn {
+                padding: 0.9rem 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="fade-up">
+        <h1>The Lay Group</h1>
+        <div class="divider"></div>
+        <p class="tagline">Restaurants &middot; Technology &middot; Consulting &middot; St. Louis, MO</p>
+    </header>
+
+    <main>
+        <p class="mission fade-up">
+            The Lay Group operates and invests in restaurant concepts across the
+            greater St. Louis area. We are committed to quality food, strong local
+            partnerships, and building brands that serve our communities well.
+        </p>
+
+        <section class="order-section fade-up">
+            <h2>Order Now</h2>
+            <div class="order-buttons">
+                <a class="order-btn" href="https://order.spoton.com/so-slucreve-picklemans-gourmet-cafe-9271/saint-louis-mo/6376c3ecea957237fdc1a16f" target="_blank" rel="noopener">
+                    Pickleman's Gourmet Cafe
+                    <span class="location">Saint Louis University</span>
+                </a>
+                <a class="order-btn" href="https://order.spoton.com/so-picklemans-gourmet-cafe-slucreve-9271/creve-coeur-mo/6377ca2e3cc7c60043043eb6" target="_blank" rel="noopener">
+                    Pickleman's Gourmet Cafe
+                    <span class="location">Creve Coeur</span>
+                </a>
+            </div>
+        </section>
+
+        <hr class="section-rule">
+
+        <section class="links-section fade-up">
+            <h2>Family of Companies</h2>
+            <ul>
+                <li>Lay Group STL LLC (Pickleman's Gourmet Cafe)</li>
+                <li>Lay Group CC LLC (Pickleman's Gourmet Cafe)</li>
+                <li>Lay Group Solutions LLC (AI and Operations Consulting)</li>
+                <li>Lay Group Labs LLC (Custom Software Development and AI Agent Deployment)</li>
+            </ul>
+        </section>
+
+        <section class="links-section fade-up">
+            <h2>Related</h2>
+            <ul>
+                <li><a href="https://www.laygroupsolutions.com" target="_blank" rel="noopener">LayGroupSolutions.com</a></li>
+                <li><a href="https://www.picklemans.com/" target="_blank" rel="noopener">Picklemans.com</a></li>
+                <li><a href="https://www.layercraft.com" target="_blank" rel="noopener">LayerCraft.com</a></li>
+            </ul>
+
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 Lay Group Holdings LLC. All rights reserved.
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, i * 120);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    </script>
+</body>
+</html>
